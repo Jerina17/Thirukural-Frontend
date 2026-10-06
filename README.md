@@ -1,3 +1,8 @@
+**TEAM NAME:Byte Blitz
+REG NO:7376242IT189,7376242IT213,7376242IT323
+THIRUKURAL:391-கற்க கசடறக் கற்பவை கற்றபின்
+               நிற்க அதற்குத் தக.**
+
 # குறள் கல்வி | Kural Kalvi
 
 **Kural Kalvi (குறள் கல்வி)** is a child-friendly, interactive Thirukkural learning web application designed for school students using **Plain HTML, CSS, and Vanilla JavaScript**.
