@@ -1,0 +1,526 @@
+/* css/screens.css - Per-Screen Detailed Styling */
+
+/* ==========================================================================
+   1. OPENING SCREEN
+   ========================================================================== */
+#screen-opening {
+  background: radial-gradient(circle at center, #8B2626 0%, #4A1212 100%);
+  color: var(--cream-bg);
+  position: relative;
+  overflow: hidden;
+  border: 12px solid var(--accent-gold);
+  border-image: repeating-linear-gradient(45deg, var(--accent-gold), var(--accent-gold) 15px, #8B6508 15px, #8B6508 30px) 20;
+}
+
+.kolam-border {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 2px dashed rgba(212, 160, 23, 0.4);
+  pointer-events: none;
+}
+
+.title-badge {
+  background: var(--accent-gold);
+  color: var(--primary-maroon);
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 0.3rem 1rem;
+  border-radius: var(--radius-round);
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+.main-title-ta {
+  font-size: clamp(2.2rem, 6vw, 3.8rem);
+  font-weight: 800;
+  color: var(--accent-gold);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+  margin-bottom: 0.2rem;
+}
+
+.main-title-en {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-weight: 600;
+  color: var(--cream-bg);
+  margin-bottom: 2rem;
+}
+
+.pulse-btn {
+  animation: pulseGlow 2s infinite ease-in-out;
+}
+
+/* Floating Diya / Lotus CSS Particles */
+.floating-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  font-size: 1.5rem;
+  opacity: 0.7;
+  animation: floatUp 6s infinite linear;
+}
+.particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+.particle:nth-child(2) { left: 30%; animation-delay: 2s; }
+.particle:nth-child(3) { left: 70%; animation-delay: 1s; }
+.particle:nth-child(4) { left: 85%; animation-delay: 4s; }
+
+
+/* ==========================================================================
+   2 & 5. OLAI SUVADI (PALM LEAF MANUSCRIPT) SCREENS
+   ========================================================================== */
+.olai-suvadi-wrapper {
+  width: 100%;
+  max-width: 750px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 260px;
+  position: relative;
+}
+
+.olai-suvadi {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.wooden-roll {
+  width: 28px;
+  height: 220px;
+  background: linear-gradient(90deg, #3E1E08, #6E3B13, #2B1405);
+  border-radius: 6px;
+  box-shadow: 3px 0 8px rgba(0,0,0,0.5);
+  z-index: 10;
+  flex-shrink: 0;
+}
+
+.palm-leaf {
+  flex-grow: 1;
+  height: 180px;
+  background: linear-gradient(180deg, #E6C280 0%, #D4A755 50%, #C4953C 100%);
+  border-top: 3px solid #8B6508;
+  border-bottom: 3px solid #8B6508;
+  box-shadow: inset 0 0 15px rgba(107, 30, 30, 0.2), 0 8px 20px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  position: relative;
+  overflow: hidden;
+  transform-origin: center center;
+}
+
+.palm-leaf::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(139, 101, 8, 0.3);
+}
+
+.thread-hole {
+  width: 12px;
+  height: 12px;
+  background: var(--primary-maroon);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 2px solid var(--accent-gold);
+}
+.thread-hole.left { left: 40px; }
+.thread-hole.right { right: 40px; }
+
+/* Open/Close Animation State Classes */
+.olai-suvadi.opening .palm-leaf {
+  animation: leafExpand 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+.olai-suvadi.opening .wooden-roll.left {
+  animation: rollSlideLeft 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+.olai-suvadi.opening .wooden-roll.right {
+  animation: rollSlideRight 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.olai-suvadi.closing .palm-leaf {
+  animation: leafContract 1.3s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+}
+.olai-suvadi.closing .wooden-roll.left {
+  animation: rollSlideLeftReverse 1.3s forwards;
+}
+.olai-suvadi.closing .wooden-roll.right {
+  animation: rollSlideRightReverse 1.3s forwards;
+}
+
+
+/* ==========================================================================
+   3. THIRUKKURAL APPEARS SCREEN
+   ========================================================================== */
+.kural-meta-badge {
+  background: var(--primary-maroon);
+  color: var(--accent-gold);
+  padding: 0.4rem 1.2rem;
+  border-radius: var(--radius-round);
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--accent-gold);
+}
+
+.kural-display-card {
+  background: linear-gradient(180deg, #F5DFB3 0%, #E6C280 100%);
+  border: 4px solid var(--accent-gold);
+  border-radius: var(--radius-md);
+  padding: 2rem 1.5rem;
+  width: 100%;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  margin-bottom: 2rem;
+}
+
+.kural-text-line {
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
+  font-weight: 800;
+  color: var(--primary-maroon);
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
+.stagger-word {
+  display: inline-block;
+  opacity: 0;
+  animation: wordReveal 0.5s ease-out forwards;
+}
+
+
+/* ==========================================================================
+   4. TEACHER READS / TEACHES SCREEN
+   ========================================================================== */
+.teacher-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+@media (min-width: 650px) {
+  .teacher-stage {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.teacher-mascot-wrapper {
+  flex-shrink: 0;
+  width: 140px;
+  height: 180px;
+}
+
+.teacher-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.teacher-mascot-wrapper.is-talking .teacher-head {
+  animation: headBob 0.6s infinite alternate ease-in-out;
+}
+.teacher-mascot-wrapper.is-talking .teacher-mouth {
+  animation: mouthMove 0.3s infinite alternate ease-in-out;
+}
+
+.speech-bubble {
+  flex-grow: 1;
+  background: var(--white);
+  border: 3px solid var(--primary-maroon);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  position: relative;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.karaoke-word {
+  font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+  font-weight: 700;
+  color: var(--text-dark);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+  display: inline-block;
+}
+
+.karaoke-word.active {
+  background: var(--primary-maroon);
+  color: var(--accent-gold);
+  transform: scale(1.1);
+  box-shadow: 0 2px 8px rgba(107, 30, 30, 0.4);
+}
+
+.audio-controls-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+
+/* ==========================================================================
+   6. PORUL / MEANING SCREEN
+   ========================================================================== */
+.meaning-card {
+  background: var(--white);
+  border: 3px solid var(--accent-gold);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.meaning-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--primary-maroon);
+  margin-bottom: 1rem;
+}
+
+.meaning-body {
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  color: var(--text-dark);
+  line-height: 1.8;
+}
+
+.gold-keyword {
+  background: rgba(212, 160, 23, 0.25);
+  color: var(--primary-maroon);
+  font-weight: 800;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  border-bottom: 2px solid var(--accent-gold);
+}
+
+
+/* ==========================================================================
+   7. VIDEO SCREEN
+   ========================================================================== */
+.video-responsive-wrapper {
+  width: 100%;
+  max-width: 680px;
+  aspect-ratio: 16 / 9;
+  border: 4px solid var(--accent-gold);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  background: #000;
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.video-responsive-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.video-fallback-card {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #3E1E08, #6B1E1E);
+  color: var(--cream-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.fallback-progress-bar {
+  width: 80%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  margin-top: 1rem;
+  overflow: hidden;
+}
+
+.fallback-progress-fill {
+  height: 100%;
+  background: var(--accent-gold);
+  width: 0%;
+  transition: width 1s linear;
+}
+
+
+/* ==========================================================================
+   8 & 9. GAME INTRO & GAME SCREENS
+   ========================================================================== */
+.game-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.hearts-container {
+  display: flex;
+  gap: 0.3rem;
+  font-size: 1.6rem;
+}
+
+.game-sentence-card {
+  background: var(--white);
+  border: 3px solid var(--primary-maroon);
+  border-radius: var(--radius-md);
+  padding: 2rem 1.5rem;
+  width: 100%;
+  margin-bottom: 2rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.game-slot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 110px;
+  height: 48px;
+  border: 2.5px dashed var(--accent-gold);
+  border-radius: var(--radius-sm);
+  background: var(--cream-bg);
+  margin: 0.3rem;
+  vertical-align: middle;
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: var(--primary-maroon);
+  cursor: pointer;
+  position: relative;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.game-slot:focus-visible {
+  outline: 3px solid var(--accent-gold);
+}
+
+.game-slot.correct {
+  border: 2.5px solid var(--leaf-green);
+  background: #E8F5E9;
+  color: var(--leaf-green);
+}
+
+.slot-hint {
+  position: absolute;
+  top: -10px;
+  right: -5px;
+  font-size: 0.75rem;
+  background: var(--accent-gold);
+  color: var(--primary-maroon);
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+}
+
+.word-bank-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+  width: 100%;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: rgba(107, 30, 30, 0.05);
+  border-radius: var(--radius-md);
+}
+
+.word-chip {
+  background: var(--primary-maroon);
+  color: var(--accent-gold);
+  border: 2px solid var(--accent-gold);
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-round);
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: grab;
+  user-select: none;
+  transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.word-chip:hover, .word-chip:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  background: var(--maroon-dark);
+}
+
+.word-chip.selected {
+  outline: 3px solid var(--gold-hover);
+  background: #8B2626;
+  transform: scale(1.08);
+}
+
+.word-chip.placed {
+  opacity: 0.3;
+  pointer-events: none;
+  cursor: default;
+}
+
+
+/* ==========================================================================
+   10. RESULT SCREEN
+   ========================================================================== */
+#confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 99;
+}
+
+.result-card {
+  background: var(--white);
+  border: 4px solid var(--accent-gold);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 1.5rem;
+  width: 100%;
+  max-width: 550px;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.stars-row {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 3rem;
+}
+
+.star-icon.filled {
+  color: var(--gold-hover);
+  animation: starPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.star-icon.empty {
+  color: #DDD;
+}

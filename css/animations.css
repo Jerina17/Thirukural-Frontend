@@ -1,0 +1,178 @@
+/* css/animations.css - Keyframe Animations & Transitions (60fps Optimized) */
+
+/* Fade & Slide Screen Transition */
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Opening Start Button Pulse */
+@keyframes pulseGlow {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(212, 160, 23, 0.7);
+  }
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 0 16px rgba(212, 160, 23, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(212, 160, 23, 0);
+  }
+}
+
+/* Floating Diya / Lotus Particle Upward Float */
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-20vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Olai Suvadi Opening Animations */
+@keyframes leafExpand {
+  0% {
+    transform: scaleX(0.02);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes rollSlideLeft {
+  0% {
+    transform: translateX(260px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes rollSlideRight {
+  0% {
+    transform: translateX(-260px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Olai Suvadi Closing Animations */
+@keyframes leafContract {
+  0% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(0.02);
+  }
+}
+
+@keyframes rollSlideLeftReverse {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(260px);
+  }
+}
+
+@keyframes rollSlideRightReverse {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-260px);
+  }
+}
+
+/* Word Reveal Staggered Fade */
+@keyframes wordReveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Teacher Mascot Talking Head Bob & Mouth Movement */
+@keyframes headBob {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-4px) rotate(-2deg);
+  }
+}
+
+@keyframes mouthMove {
+  0% {
+    transform: scaleY(0.4);
+  }
+  100% {
+    transform: scaleY(1.4);
+  }
+}
+
+/* Wrong Answer Slot Shake Animation */
+@keyframes wrongShake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+.wrong-shake {
+  animation: wrongShake 0.5s ease-in-out;
+  border-color: #E53935 !important;
+  background: #FFEBEE !important;
+}
+
+/* Star Pop-in Animation */
+@keyframes starPop {
+  0% {
+    transform: scale(0) rotate(-45deg);
+    opacity: 0;
+  }
+  80% {
+    transform: scale(1.3) rotate(10deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Trophy SVG Pop-in Animation */
+.trophy-svg.pop-in {
+  animation: starPop 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Respect Accessibility settings: prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .particle {
+    display: none !important;
+  }
+}

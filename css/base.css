@@ -1,0 +1,210 @@
+/* css/base.css - Design System Tokens, Typography, Resets & Global Layout */
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@400;600;700;800&family=Noto+Sans+Tamil:wght@400;600;700;800&display=swap');
+
+:root {
+  /* Color Palette */
+  --primary-maroon: #6B1E1E;
+  --maroon-dark: #4A1212;
+  --accent-gold: #D4A017;
+  --gold-hover: #F1C40F;
+  --turmeric-yellow: #E5A93C;
+  --cream-bg: #FFF4D6;
+  --leaf-green: #2E7D32;
+  --text-dark: #2B1810;
+  --text-gold: #8B6508;
+  --white: #FFFFFF;
+  --shadow-dark: rgba(0, 0, 0, 0.25);
+  --glass-bg: rgba(255, 244, 214, 0.85);
+
+  /* Typography */
+  --font-tamil: 'Noto Sans Tamil', 'Catamaran', sans-serif;
+  --font-en: 'Catamaran', 'Noto Sans Tamil', sans-serif;
+
+  /* Spacing & Borders */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-round: 50px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  font-family: var(--font-tamil);
+  background: var(--primary-maroon);
+  color: var(--text-dark);
+  line-height: 1.5;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding-bottom: 2rem;
+}
+
+/* App Container */
+#app-container {
+  width: 100%;
+  max-width: 900px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: var(--cream-bg);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Persistent Top Navigation Bar */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.25rem;
+  background-color: var(--primary-maroon);
+  color: var(--accent-gold);
+  border-bottom: 3px solid var(--accent-gold);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.top-bar .nav-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.top-btn {
+  background: rgba(212, 160, 23, 0.15);
+  border: 1.5px solid var(--accent-gold);
+  color: var(--cream-bg);
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.top-btn:hover, .top-btn:focus-visible {
+  background: var(--accent-gold);
+  color: var(--primary-maroon);
+  transform: translateY(-2px);
+  outline: 2px solid var(--cream-bg);
+}
+
+/* 10-Dot Progress Bar */
+.progress-bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  flex-grow: 1;
+  margin: 0 0.75rem;
+}
+
+.progress-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 244, 214, 0.3);
+  border: 1px solid var(--accent-gold);
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.25s ease;
+}
+
+.progress-dot.completed {
+  background: var(--accent-gold);
+}
+
+.progress-dot.current {
+  background: var(--gold-hover);
+  transform: scale(1.4);
+  box-shadow: 0 0 8px var(--gold-hover);
+}
+
+/* Screens Wrapper */
+.screens-wrapper {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Base Screen Styling */
+.screen {
+  display: none;
+  width: 100%;
+  flex-grow: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.screen.active {
+  display: flex;
+  animation: fadeInSlide 0.4s ease-out forwards;
+}
+
+/* Buttons System */
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-gold), #B8860B);
+  color: var(--primary-maroon);
+  border: 2px solid var(--primary-maroon);
+  padding: 0.85rem 1.8rem;
+  font-size: 1.2rem;
+  font-weight: 800;
+  border-radius: var(--radius-round);
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-primary:hover, .btn-primary:focus-visible {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  background: linear-gradient(135deg, #F1C40F, var(--accent-gold));
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-secondary {
+  background: var(--cream-bg);
+  color: var(--primary-maroon);
+  border: 2px solid var(--primary-maroon);
+  padding: 0.65rem 1.4rem;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: var(--radius-round);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.btn-secondary:hover, .btn-secondary:focus-visible {
+  background: var(--accent-gold);
+  transform: translateY(-2px);
+}

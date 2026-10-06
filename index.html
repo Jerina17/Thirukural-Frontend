@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>குறள் கல்வி | Kural Kalvi - Interactive Thirukkural Learning</title>
+  <meta name="description" content="An interactive Thirukkural learning experience for school students. Learn Thirukkural 391 with audio, karaoke, video, and fill-in-the-blank games.">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/screens.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  <!-- Confetti Canvas overlay for results -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <div id="app-container">
+    
+    <!-- Persistent Top Navigation Bar -->
+    <header class="top-bar">
+      <div class="nav-group">
+        <button id="top-home-btn" class="top-btn" title="Home / முகப்பு" aria-label="Home">🏠</button>
+        <button id="top-restart-btn" class="top-btn" title="Restart / மீண்டும் தொடங்கு" aria-label="Restart">🔄</button>
+      </div>
+
+      <!-- 10-Dot Progress Bar -->
+      <nav class="progress-bar-container" aria-label="Lesson Progress">
+        <span class="progress-dot completed current" title="Step 1: Opening"></span>
+        <span class="progress-dot" title="Step 2: Scroll Opens"></span>
+        <span class="progress-dot" title="Step 3: Thirukkural"></span>
+        <span class="progress-dot" title="Step 4: Teacher Reading"></span>
+        <span class="progress-dot" title="Step 5: Scroll Closes"></span>
+        <span class="progress-dot" title="Step 6: Meaning"></span>
+        <span class="progress-dot" title="Step 7: Video"></span>
+        <span class="progress-dot" title="Step 8: Game Intro"></span>
+        <span class="progress-dot" title="Step 9: Game"></span>
+        <span class="progress-dot" title="Step 10: Result"></span>
+      </nav>
+
+      <div class="nav-group">
+        <button id="top-sound-btn" class="top-btn" title="Toggle Sound / ஒலி அமைப்புகள்" aria-label="Toggle Sound">🔊</button>
+      </div>
+    </header>
+
+    <!-- Main Screens Container -->
+    <main class="screens-wrapper">
+
+      <!-- STEP 1: OPENING -->
+      <section class="screen active" id="screen-opening" data-step="OPENING">
+        <div class="kolam-border"></div>
+        <div class="floating-particles">
+          <span class="particle">🪔</span>
+          <span class="particle">🪷</span>
+          <span class="particle">🪔</span>
+          <span class="particle">🪷</span>
+        </div>
+
+        <div class="title-badge">பள்ளி மாணவர்களுக்கான குறள் கற்றல்</div>
+        <h1 class="main-title-ta">குறள் கல்வி</h1>
+        <h2 class="main-title-en">Kural Kalvi</h2>
+        <p style="font-size: 1.1rem; color: var(--cream-bg); margin-bottom: 2.5rem; max-width: 500px;">
+          திருக்குறள் 391: கல்வி அதிகாரம் பற்றி விளையாடி மகிழ்ந்து கற்றுக் கொள்வோம்!
+        </p>
+
+        <button id="opening-start-btn" class="btn-primary pulse-btn" aria-label="Start Learning">
+          தொடங்கு / Start ▶
+        </button>
+      </section>
+
+
+      <!-- STEP 2: OLAI SUVADI OPENS -->
+      <section class="screen" id="screen-scroll-open" data-step="SCROLL_OPEN" aria-hidden="true" inert>
+        <div id="scroll-open-container" class="olai-suvadi-wrapper">
+          <div class="olai-suvadi closed">
+            <div class="wooden-roll left"></div>
+            <div class="palm-leaf">
+              <div class="thread-hole left"></div>
+              <h2 style="color: var(--primary-maroon); font-weight: 800;">ஓலைச்சுவடி திறக்கிறது...</h2>
+              <div class="thread-hole right"></div>
+            </div>
+            <div class="wooden-roll right"></div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- STEP 3: THIRUKKURAL APPEARS -->
+      <section class="screen" id="screen-kural" data-step="KURAL" aria-hidden="true" inert>
+        <div class="kural-meta-badge">
+          <span>குறள் 391 | பொருட்பால் - கல்வி</span>
+        </div>
+
+        <div class="kural-display-card">
+          <p class="kural-text-line">
+            <span class="stagger-word" style="animation-delay: 0.1s">கற்க</span>
+            <span class="stagger-word" style="animation-delay: 0.3s">கசடறக்</span>
+            <span class="stagger-word" style="animation-delay: 0.5s">கற்பவை</span>
+            <span class="stagger-word" style="animation-delay: 0.7s">கற்றபின்</span>
+          </p>
+          <p class="kural-text-line">
+            <span class="stagger-word" style="animation-delay: 1.0s">நிற்க</span>
+            <span class="stagger-word" style="animation-delay: 1.2s">அதற்குத்</span>
+            <span class="stagger-word" style="animation-delay: 1.4s">தக.</span>
+          </p>
+        </div>
+
+        <button id="kural-next-btn" class="btn-primary" aria-label="Continue to Teacher">
+          அடுத்து / Next ➔
+        </button>
+      </section>
+
+
+      <!-- STEP 4: TEACHER READS / TEACHES -->
+      <section class="screen" id="screen-teacher" data-step="TEACHER" aria-hidden="true" inert>
+        <h2 style="color: var(--primary-maroon); margin-bottom: 1rem; font-weight: 800;">ஆசிரியர் வாசித்தல் / Teacher Reading</h2>
+
+        <div class="teacher-stage">
+          <!-- Teacher SVG Illustration -->
+          <div id="teacher-mascot" class="teacher-mascot-wrapper">
+            <svg class="teacher-svg" viewBox="0 0 100 120" role="img" aria-label="Teacher Illustration">
+              <circle cx="50" cy="90" r="30" fill="#6B1E1E"/>
+              <g class="teacher-head">
+                <circle cx="50" cy="45" r="22" fill="#F5CBA7"/>
+                <circle cx="43" cy="42" r="3" fill="#2B1810"/>
+                <circle cx="57" cy="42" r="3" fill="#2B1810"/>
+                <path class="teacher-mouth" d="M 44 55 Q 50 62 56 55" fill="none" stroke="#6B1E1E" stroke-width="2.5" stroke-linecap="round"/>
+                <!-- Traditional Kudumi & Tilak -->
+                <circle cx="50" cy="20" r="8" fill="#2B1810"/>
+                <rect x="48" y="30" width="4" height="6" fill="#D4A017" rx="1"/>
+              </g>
+            </svg>
+          </div>
+
+          <div class="speech-bubble">
+            <div id="teacher-words-container">
+              <!-- Rendered dynamically by teacher.js -->
+            </div>
+          </div>
+        </div>
+
+        <div class="audio-controls-bar">
+          <button id="teacher-play-btn" class="btn-secondary">▶ Read / படிக்க</button>
+          <button id="teacher-replay-btn" class="btn-secondary">🔄 Replay</button>
+          <button id="teacher-speed-btn" class="btn-secondary">1x</button>
+          <button id="teacher-next-btn" class="btn-primary" disabled>அடுத்து / Next ➔</button>
+        </div>
+      </section>
+
+
+      <!-- STEP 5: OLAI SUVADI CLOSES -->
+      <section class="screen" id="screen-scroll-close" data-step="SCROLL_CLOSE" aria-hidden="true" inert>
+        <div id="scroll-close-container" class="olai-suvadi-wrapper">
+          <div class="olai-suvadi open">
+            <div class="wooden-roll left"></div>
+            <div class="palm-leaf">
+              <div class="thread-hole left"></div>
+              <h2 style="color: var(--primary-maroon); font-weight: 800;">ஓலைச்சுவடி மூடுகிறது...</h2>
+              <div class="thread-hole right"></div>
+            </div>
+            <div class="wooden-roll right"></div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- STEP 6: PORUL / MEANING -->
+      <section class="screen" id="screen-meaning" data-step="MEANING" aria-hidden="true" inert>
+        <div class="meaning-card">
+          <h2 class="meaning-title">பொருள் / Meaning</h2>
+          
+          <div id="meaning-text-ta" class="meaning-body">
+            <span class="gold-keyword">கற்க வேண்டிய</span> நூல்களைக் குற்றம் இல்லாமல் கற்க வேண்டும்; கற்ற பிறகு அந்தக் <span class="gold-keyword">கல்விக்குத் தகுந்தபடி</span> வாழ வேண்டும்.
+          </div>
+          
+          <div id="meaning-text-en" class="meaning-body" style="display: none;">
+            <span class="gold-keyword">Learn thoroughly</span>, without flaw, what is worth learning, and then <span class="gold-keyword">live according</span> to what you have learned.
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center;">
+          <button id="meaning-lang-btn" class="btn-secondary">English / ஆங்கிலம்</button>
+          <button id="meaning-audio-btn" class="btn-secondary">🔊 Listen / கேட்க</button>
+          <button id="meaning-next-btn" class="btn-primary">அடுத்து / Next ➔</button>
+        </div>
+      </section>
+
+
+      <!-- STEP 7: VIDEO (YOUTUBE) -->
+      <section class="screen" id="screen-video" data-step="VIDEO" aria-hidden="true" inert>
+        <h2 style="color: var(--primary-maroon); margin-bottom: 1rem; font-weight: 800;">காணொளி விளக்கம் / Video Explanation</h2>
+
+        <div class="video-responsive-wrapper">
+          <div id="youtube-player-container" style="width: 100%; height: 100%;">
+            <div id="youtube-player-element"></div>
+          </div>
+
+          <!-- Fallback animated scene if video fails or offline -->
+          <div id="video-fallback-scene" class="video-fallback-card" style="display: none;">
+            <p style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold); margin-bottom: 0.5rem;">
+              "கற்க கசடறக் கற்பவை கற்றபின் நிற்க அதற்குத் தக"
+            </p>
+            <p style="font-size: 1rem;">கல்வியின் சிறப்பை விளக்கும் அனிமேஷன் காட்சி</p>
+            <div class="fallback-progress-bar">
+              <div id="fallback-progress-fill" class="fallback-progress-fill"></div>
+            </div>
+            <a href="https://www.youtube.com/watch?v=slJLDuXK23A" target="_blank" rel="noopener noreferrer" style="color: var(--accent-gold); margin-top: 1rem; font-size: 0.9rem;">
+              Open on YouTube ↗
+            </a>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 1rem; justify-content: center;">
+          <button id="video-skip-btn" class="btn-secondary" style="display: none;">Skip ⏭</button>
+          <button id="video-next-btn" class="btn-primary" style="display: none;">அடுத்து / Next ➔</button>
+        </div>
+      </section>
+
+
+      <!-- STEP 8: GAME INTRO -->
+      <section class="screen" id="screen-game-intro" data-step="GAME_INTRO" aria-hidden="true" inert>
+        <div style="margin-bottom: 1.5rem;">
+          <svg viewBox="0 0 100 100" width="120" height="120" role="img" aria-label="Game Mascot">
+            <circle cx="50" cy="50" r="45" fill="#E5A93C"/>
+            <circle cx="35" cy="40" r="6" fill="#6B1E1E"/>
+            <circle cx="65" cy="40" r="6" fill="#6B1E1E"/>
+            <path d="M 30 65 Q 50 80 70 65" fill="none" stroke="#6B1E1E" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <h2 style="font-size: 2rem; color: var(--primary-maroon); font-weight: 800; margin-bottom: 0.5rem;">
+          திருக்குறளை நிறைவு செய்யுங்கள்!
+        </h2>
+        <p style="font-size: 1.2rem; color: var(--text-dark); margin-bottom: 2rem;">
+          Complete the Thirukkural! Fill in the missing words correctly.
+        </p>
+
+        <button id="game-intro-play-btn" class="btn-primary pulse-btn">
+          Play Game 🎮
+        </button>
+      </section>
+
+
+      <!-- STEP 9: GAME (COMPLETE THE THIRUKKURAL) -->
+      <section class="screen" id="screen-game" data-step="GAME" aria-hidden="true" inert>
+        <div class="game-header-bar">
+          <div id="game-hearts" class="hearts-container" aria-label="Lives Remaining">
+            <!-- Hearts rendered dynamically -->
+          </div>
+          <button id="game-hint-btn" class="btn-secondary" title="Use Hint (-1 Star)">💡 Hint</button>
+        </div>
+
+        <div class="game-sentence-card">
+          <div id="game-sentence-container">
+            <!-- Slots and words rendered dynamically -->
+          </div>
+        </div>
+
+        <p style="font-size: 0.95rem; color: var(--primary-maroon); font-weight: bold; margin-bottom: 0.5rem;">
+          வார்த்தைகளை இழுத்து பொருத்தவும் / Drag or tap words:
+        </p>
+        <div id="game-word-bank" class="word-bank-container">
+          <!-- Chips rendered dynamically -->
+        </div>
+
+        <button id="game-next-btn" class="btn-primary" style="display: none;">
+          முடிவுகள் பார்க்க / See Results ➔
+        </button>
+      </section>
+
+
+      <!-- STEP 10: RESULT -->
+      <section class="screen" id="screen-result" data-step="RESULT" aria-hidden="true" inert>
+        <div class="result-card">
+          <div id="result-stars-container" class="stars-row">
+            <!-- Stars rendered dynamically -->
+          </div>
+
+          <div id="result-trophy-container">
+            <!-- Trophy SVG rendered dynamically -->
+          </div>
+
+          <h2 id="result-message-title" style="font-size: 1.8rem; color: var(--primary-maroon); font-weight: 800;">
+            மிகச் சிறப்பு!
+          </h2>
+          <p id="result-message-sub" style="font-size: 1.1rem; color: var(--text-dark);">
+            நீங்கள் திருக்குறளை மிகத் துல்லியமாகக் கற்றுக்கொண்டீர்கள்!
+          </p>
+
+          <div style="display: flex; gap: 1rem; width: 100%; justify-content: center; margin-top: 1rem;">
+            <button id="result-restart-btn" class="btn-primary">Play Again 🔄</button>
+            <button id="result-home-btn" class="btn-secondary">Home 🏠</button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- JavaScript Modules included in order -->
+  <script src="js/data.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/scroll.js"></script>
+  <script src="js/teacher.js"></script>
+  <script src="js/video.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/result.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
