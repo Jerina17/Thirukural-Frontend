@@ -1,6 +1,7 @@
-**TEAM NAME:Byte Blitz
-REG NO:7376242IT189,7376242IT213,7376242IT323
-THIRUKURAL:391-கற்க கசடறக் கற்பவை கற்றபின்
+**TEAM NAME:Byte Blitz**
+
+**REG NO:7376242IT189,7376242IT213,7376242IT323**
+**THIRUKURAL:391-கற்க கசடறக் கற்பவை கற்றபின்
                நிற்க அதற்குத் தக.**
 
 # குறள் கல்வி | Kural Kalvi
